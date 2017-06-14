@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+</head>
+
+<body>
+
+<% include parts/header.ejs%>
+
+
+<!-- Insert Body here -->
+<div class="container">
+
+  <div id="articles">
+    <%- partial('post', posts) %>
+  </div>
+
+</div><!-- /.container -->
+
+<% include parts/footer.ejs%>
+
+</body>
+</html>
