@@ -1,37 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<% include parts/head.ejs%>
+	<link rel="stylesheet" type="text/css" href="css/pagedecontact.css" />
 </head>
-
 <body>
 
 <% include parts/header.ejs%>
 
 
-<!-- Insert Body here -->
-<div class="container">
-
-	<form action="/register" method="post">
-
-		<div><h2>S'enregister</h2></div>
-
-		<label>Username</label>
-		<input type="text" name="username" placeholder="username" /><br>
-
-		<label for="email">Email</label>
-		<input type="email" name="email" placeholder="email" /><br>
-
-		<label>Password</label>
-		<input type="password" name="password" placeholder="password" /><br>
-
-		<label>Password Confirmation</label>
-		<input type="password" name="password_confirmation" placeholder="password_confirmation" /><br>
-
-		<input type="submit" value="Envoyer" />
-
-	</form>
-
-</div><!-- /.container -->
+<section>
+	<h1>Inscription</h1>
+	<div class="formulaireId">
+		<form name="formulaire" onsubmit=" return verifForm(this)" action="/register" method="post">
+			<div>
+				<label>Username <span class="etoile">*</span></label><br>
+				<input type="text" name="username" class="pseudo" id="champsss" placeholder="Username" onblur="verifPseudo(this)"/>
+			</div>
+			<div>
+				<label>Mot de passe <span class="etoile">*</span></label><br>
+				<input type="password" name="password" class="mdp" id="champssss" placeholder="Password" onblur="verifPass(this)"/>
+			</div>
+			<div>
+				<label>Confirmation mot de passe <span class="etoile">*</span></label><br>
+				<input type="password" name="password_confirmation" class="mdpConfirm" id="champss" placeholder="Password Confirmation" onblur="verifPassConfirm(this)"/>
+			</div>
+			<div>
+				<label>Email <span class="etoile">*</span></label><br>
+				<input type="email" name="email" class="email" id="champs" placeholder="Email" onblur="verifMail(this)"/>
+			</div>
+			<% if (message.length > 0) { %>
+        		<div class="alert alert-danger"><%= message %></div>
+    		<% } %>
+			<div>
+				<input type="submit" name="envoyer" id="envoi" class="submit" value="S'inscrire"/>
+			</div>
+		</form>
+	</div>
+</section>
 
 <footer>
 	<% include parts/footer.ejs%>
@@ -39,3 +45,12 @@
 
 </body>
 </html>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+<script type="text/javascript" src="./jquery-shake-master/jquery.ui.shake.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.3/jquery.min.js"></script>
+<script src="http://mymaplist.com/js/vendor/TweenLite.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/TweenLite.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/gsap/1.13.2/plugins/CSSPlugin.min.js"></script>
+<script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script src="js/register.js"></script>
