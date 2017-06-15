@@ -1,6 +1,6 @@
-module.exports = function (app) {
+module.exports = function (app, passport) {
 	// Profile -------------------------------------------------------------------
-	app.get('/profile/:id', function(req, res) {
-		res.render('profile', {id: req.params.id});
+	app.get('/profile', function(req, res) {
+		res.render('profile', {user: req.user});
 	});
 };

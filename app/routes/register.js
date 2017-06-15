@@ -1,7 +1,3 @@
-// Récupération du client mongodb
-var mongoClient = require('mongodb').MongoClient;
-var database  = 'mongodb://localhost/';
-
 module.exports = function (app, passport) {
 	// Register ------------------------------------------------------------------
 	app.get('/register', function(req, res) {

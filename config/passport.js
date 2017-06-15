@@ -25,7 +25,6 @@ module.exports = function(passport) {
         User.findOne({ 'username' :  username }, function(err, user) {
             if (err)
                 return done(err);
-
             if (user) {
                 return done(null, false, req.flash('registerMessage', 'Ce pseudo est déjà pris!'));
             } else {
@@ -38,10 +37,27 @@ module.exports = function(passport) {
                 newUser.save(function(err) {
                     if (err)
                         throw err;
-                    return done(null, newUser);
+                    return done(null, newUser, req.flash('indexMessage', 'Votre compte a été crée avec succès!'));
                 });
             }
         });    
+        });
+    }));
+
+    passport.use('local-login', new LocalStrategy({
+        usernameField : 'username',
+        passwordField : 'password',
+        passReqToCallback : true // allows us to pass back the entire request to the callback
+    },
+    function(req, username, password, done) {
+        User.findOne({ 'username' :  username }, function(err, user) {
+            if (err)
+                return done(err);
+            if (!user)
+                return done(null, false, req.flash('loginMessage', "Cet utilisateur n'existe pas"));
+            if (!user.validPassword(password))
+                return done(null, false, req.flash('loginMessage', 'Mauvais mot de passe'));
+            return done(null, user);
         });
     }));
 };

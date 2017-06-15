@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include parts/head.ejs%>
+    <script src="../ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+
+<% include parts/header.ejs%>
+
+
+<!-- Insert Body here -->
+<div class="container">
+	<form method="POST" action="/add">
+		<label>Titre</label><br>
+		<input type="text" name="title"/><br>
+		</div>
+		<textarea cols="80" class="ckeditor" id="editeur" name="editeur" rows="10"></textarea>
+		<input type="submit" value="envoyer" />
+	</form>
+</div><!-- /.container -->
+
+<% include parts/footer.ejs%>
+
+</body>
+</html>

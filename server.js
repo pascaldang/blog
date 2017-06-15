@@ -30,12 +30,7 @@ app.set('views', __dirname + '/views');
 
 // Routes ----------------------------------------------------------------------------------
 //require('./app/routes.js')(app);
-require('./app/routes/register.js')(app, passport);
-require('./app/routes/login.js')(app, passport);
-require('./app/routes/index.js')(app, passport);
-require('./app/routes/profile.js')(app, passport);
-require('./app/routes/error_404.js')(app);
-
+require('./app/routes.js')(app, passport);
 require('./config/passport')(passport); // pass passport for configuration
 
 // Listen ----------------------------------------------------------------------------------

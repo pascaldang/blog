@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 </head>
-<% include parts/head.ejs%>
+	<% include parts/head.ejs%>
 <body>
 
 <% include parts/header.ejs%>
@@ -11,7 +11,7 @@
 <!-- Insert Body here -->
 <div class="container">
 
-	<form>
+	<form action="/login" method="post">
 		<div><h2>Se connecter</h2></div>
 
 		<label>Username</label>
@@ -19,7 +19,9 @@
 
 		<label>Password</label>
 		<input type="password" name="password" placeholder="password" /><br>
-
+		<% if (message.length > 0) { %>
+		<div class="alert alert-danger"><%= message %></div>
+		<% } %>
 		<input type="submit" value="Envoyer" />
 	</form>
 

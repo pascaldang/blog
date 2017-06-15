@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<% include parts/head.ejs%>
+    <script src="../ckeditor/ckeditor.js"></script>
+</head>
+
+<body>
+
+<% include parts/header.ejs%>
+
+
+<!-- Insert Body here -->
+<div class="container">
+		<h1><%= articles[1].title %></h1>
+		<div><%= articles[1].content %></div>
+		<p>___________________________________</p>
+</div><!-- /.container -->
+
+<% include parts/footer.ejs%>
+
+</body>
+</html>
